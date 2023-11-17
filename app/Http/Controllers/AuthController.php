@@ -26,7 +26,7 @@ class AuthController extends Controller
             'message' => 'User is created succesfully',
         ];
 
-        return response()->json($data, 200);
+        return response()->json($data, 200); // Kode status 200: ok
     }
 
     # bikin login
@@ -56,13 +56,13 @@ class AuthController extends Controller
                 'token' => $token->plainTextToken,
             ];
 
-            return response()->json($data, 200);
+            return response()->json($data, 200); // Kode status 200: ok
         } else {
             $data = [
                 'message' => 'Login failed',
             ];
 
-            return response()->json($data, 401);
+            return response()->json($data, 401); // Kode status 401: unauthenticated
         }
     }
 }

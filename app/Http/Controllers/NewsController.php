@@ -13,7 +13,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        # menggunakan model news untuk select data
+        // menggunakan model news untuk select data
         $news = News::all();
 
 		if (!empty($news)) {
@@ -21,12 +21,12 @@ class NewsController extends Controller
 				'message' => 'Menampilkan Data Semua Berita',
 				'data' => $news,
 			];
-			return response()->json($response, 200);
+			return response()->json($response, 200); // Kode status 200: OK
 		} else {
 			$response = [
 				'message' => 'Data tidak ditemukan'
 			];
-			return response()->json($response, 200);
+			return response()->json($response, 200); // Kode status 200: OK
 		}
     }
 
@@ -41,7 +41,7 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    #Mengupdate data berita
+    // Mengupdate data berita
     public function store(Request $request)
     {
         #validate
@@ -64,13 +64,13 @@ class NewsController extends Controller
 			'data' => $news,
 		];
 
-		return response()->json($response, 201);
+		return response()->json($response, 201); // Kode status 200: berhasil dibuat
     }
 
     /**
      * Display the specified resource.
      */
-    #Mencari data Berita
+    // Mencari data Berita
     public function show($id)
     {
         $news = News::find($id);
@@ -81,13 +81,13 @@ class NewsController extends Controller
 				'data' => $news
 			];
 	
-			return response()->json($response, 200);
+			return response()->json($response, 200); // Kode status 200: OK
 		} else {
 			$response = [
 				'message' => 'Data tidak ditemukan'
 			];
 			
-			return response()->json($response, 404);
+			return response()->json($response, 404); // Kode status 404: Not Found
 		}
     }
 
@@ -102,7 +102,7 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    #Mengupdate data berita
+    // Mengupdate data berita
     public function update(Request $request, string $id)
     {
         $news = News::find($id);
@@ -113,20 +113,20 @@ class NewsController extends Controller
 				'data' => $news->update($request->all())
 			];
 	
-			return response()->json($response, 200);
+			return response()->json($response, 200); // Kode status 200: OK
 		} else {
 			$response = [
 				'message' => 'Data tidak ditemukan'
 			];
 
-			return response()->json($response, 404);
+			return response()->json($response, 404); // Kode status 404: Not Found
 		}
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    #Menghapus data berita
+    // Menghapus data berita
     public function destroy($id)
     {
         $news = News::find($id);
@@ -137,13 +137,13 @@ class NewsController extends Controller
 				'data' => $news->delete()
 			];
 
-			return response()->json($response, 200); 
+			return response()->json($response, 200); // Kode status 200: OK
 		} else {
 			$response = [
 				'message' => 'Data tidak ditemukan'
 			];
 
-			return response()->json($response, 404);
+			return response()->json($response, 404); // Kode status 404: Not Found
 		}
     }
 
@@ -169,7 +169,7 @@ class NewsController extends Controller
         }
     }
 
-    #Mencari berita berdasar category
+    # Metode khusus mencari kategori sport,finance,automotive
     public function category($category)
     {
         // Implementasi pencarian berita berdasarkan kategori
